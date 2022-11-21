@@ -1,0 +1,41 @@
+.todo {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.todo__checkbox {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo__checkbox-icon {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #2564CF;
+    border-radius: 50%;
+}
+
+.todo__title {
+    flex-grow: 1;
+    padding-left: 15px;
+    cursor: default;
+}
+
+.todo__title-done {
+    text-decoration: line-through;
+}
+
+.todo__delete {
+    background-color: #FF5252;
+    color: #fff;
+    margin-right: 8px;
+}

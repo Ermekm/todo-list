@@ -1,0 +1,51 @@
+.todoForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.todoForm__label {
+    margin-bottom: 5px;
+}
+
+.todoForm__fileLabel {
+    color: #fff;
+    background-color: black;
+    display: block;
+    width: fit-content;
+}
+
+.todoForm__input {
+    margin-bottom: 25px;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+.todoForm__textarea {
+    margin-bottom: 25px;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+.todoForm__btnGroup {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.todoForm__submit {
+    width: fit-content;
+    background-color: #4CAF50;
+    color: #fff
+}
+
+.todoForm__cancel {
+    width: fit-content;
+}
+
+.todoForm__file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}

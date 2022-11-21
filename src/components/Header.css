@@ -1,0 +1,20 @@
+.header {
+    padding: 20px 15px;
+    background-color: #2564CF;
+    margin-bottom: 20px;
+}
+
+.header__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__title {
+    color: #fff;
+}
+
+.header__create-todo {
+    color: #fff;
+}
