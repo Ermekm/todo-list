@@ -12,6 +12,7 @@
 }
 
 .header__title {
+    transform: translateX(-16px);
     color: #fff;
 }
 

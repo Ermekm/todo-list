@@ -41,11 +41,23 @@
     width: fit-content;
 }
 
-.todoForm__file {
+.todoForm__fileInput {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
     overflow: hidden;
     position: absolute;
     z-index: -1;
+}
+
+.todoForm__fileList {
+    margin-bottom: 10px;
+}
+
+.todoForm__file {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
 }

@@ -4,7 +4,6 @@ import cl from './MyModal.module.css'
 const MyModal = ({ children, isModalVisible, setIsModalVisible }) => {
 
     let modalClasses = useMemo(() => {
-        console.log('changed')
         return (isModalVisible ? [cl.MyModal, cl.active] : [cl.MyModal]).join(' ')
     }, [isModalVisible])
 

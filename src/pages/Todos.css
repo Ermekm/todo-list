@@ -1,0 +1,16 @@
+.todos__create-todo {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.todos__create-todo .add {
+    color: #fff
+}

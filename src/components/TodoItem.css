@@ -8,6 +8,10 @@
     margin-bottom: 5px;
 }
 
+.todo-checked {
+    color: #2564CF;
+}
+
 .todo__checkbox {
     width: 32px;
     height: 32px;
@@ -32,6 +36,14 @@
 
 .todo__title-done {
     text-decoration: line-through;
+}
+
+.todo__date {
+    margin-right: 20px;
+}
+
+.todo__date-expired {
+    color: #a80000;
 }
 
 .todo__delete {

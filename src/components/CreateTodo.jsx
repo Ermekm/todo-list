@@ -1,44 +1,66 @@
 import React, { useState } from 'react'
 import cl from './CreateTodo.module.css'
+import { v4 } from 'uuid'
+import Service from '../API/Service'
 
 const CreateTodo = ({ createTodo }) => {
-    const [todo, setTodo] = useState({
-        title: '',
-        description: '',
-        files: [],
-        date: '',
-        isDone: false,
-    })
-    const [fileLabel, setFileLabel] = useState('Прикрепить файл');
 
-    const addTodo = (e) => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('')
+    const [date, setDate] = useState('')
+    const [fileList, setFileList] = useState([])
+
+    const addTodo = async (e) => {
         e.preventDefault()
 
         const newTodo = {
-            ...todo,
-            id: Date.now()
+            title: title,
+            description: description,
+            files: [],
+            date: date,
+            isDone: false,
+            id: null
         }
-        createTodo(newTodo)
-        clearFields();
+        const files = fileList.map((file) => file.body)
+
+        Service.postSingle(files, newTodo)
+            .then((data) => {
+                createTodo(data);
+                clearFields()
+            })
+            .catch((err) => {
+                alert(err)
+            })
+
+    }
+
+    const changeDate = (e) => {
+        setDate(e.target.value)
     }
 
     const clearFields = () => {
-        todo.title = '';
-        todo.description = '';
-        todo.files = [];
-        todo.date = '';
-        todo.isDone = false;
+        setTitle('')
+        setDescription('')
+        setDate('')
     }
 
     const handleFileInput = (e) => {
-        console.log('file input asdf')
         const files = e.target.files
-        setTodo({ ...todo, files: files })
-        if (files.length === 1) {
-            setFileLabel(files[0].name)
-        } else {
-            setFileLabel('Выбрано файлов: ' + files.length)
+        if (files.length) {
+            Array.prototype.map.call(files, (file) => {
+                setFileList(prevState => {
+                    return [...prevState, { id: v4(), body: file }]
+                })
+            })
+            e.target.value = ''
         }
+    }
+
+    const deleteFile = (e, id) => {
+        e.preventDefault();
+        setFileList((prevState) => {
+            return prevState.filter((file) => file.id !== id)
+        })
     }
 
 
@@ -49,30 +71,46 @@ const CreateTodo = ({ createTodo }) => {
                 required
                 className={cl.todoForm__input}
                 type="text"
-                value={todo.title}
-                onChange={e => setTodo({ ...todo, title: e.target.value })}
+                value={title}
+                onChange={e => setTitle(e.target.value)}
             />
             <label className={cl.todoForm__label}>Описание</label>
             <textarea
                 className={cl.todoForm__textarea}
                 rows="5"
-                value={todo.description}
-                onChange={e => setTodo({ ...todo, description: e.target.value })}
+                value={description}
+                onChange={e => setDescription(e.target.value)}
             />
             <label className={cl.todoForm__label}>Добавить дату выполнения</label>
             <input
                 className={cl.todoForm__input}
                 type="date"
-                value={todo.date}
-                onChange={e => setTodo({ ...todo, date: e.target.value })}
+                value={date}
+                onChange={e => changeDate(e)}
             />
-            <label htmlFor="file" className={[cl.todoForm__label, cl.todoForm__fileLabel, 'btn'].join(' ')}>{fileLabel}</label>
+            <div className={cl.todoForm__fileList}>
+                {fileList.map((file) => {
+                    return (
+                        <div key={file.id} className={cl.todoForm__file}>
+                            <div className={cl.todoForm__fileTitle}>
+                                {file.body.name}
+                            </div>
+                            <button className='btn' onClick={(e) => deleteFile(e, file.id)}>
+                                <span className='material-icons'>
+                                    clear
+                                </span>
+                            </button>
+                        </div>
+                    )
+                })}
+            </div>
+            <label htmlFor="file" className={[cl.todoForm__label, cl.todoForm__fileLabel, 'btn'].join(' ')}>Прикрепить файл</label>
             <input
                 id="file"
-                className={cl.todoForm__file}
+                className={cl.todoForm__fileInput}
                 type="file"
                 multiple
-                onChange={handleFileInput}
+                onChange={(e) => handleFileInput(e)}
             />
             <div className={cl.todoForm__btnGroup}>
                 <button className={[cl.todoForm__cancel, 'btn'].join(' ')}>Отменить</button>

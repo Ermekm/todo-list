@@ -1,0 +1,63 @@
+.todo {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.todo__label {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.todo__fileLabel {
+    color: #fff;
+    background-color: black;
+    display: block;
+    width: fit-content;
+    margin-bottom: 24px;
+}
+
+.todo__input {
+    margin-bottom: 24px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #000;
+    background-color: #FAF9F8;
+}
+
+.todo__input:focus {
+    border: 1px solid #2564CF;
+}
+
+.todo__fileInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.todo__fileList {
+    margin-bottom: 10px;
+}
+
+.todo__file {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #000;
+}
+
+.todo__fileTitle {
+    padding-left: 10px;
+}
+
+.todo__save {
+    width: fit-content;
+    background-color: #4CAF50;
+    color: #fff
+}
