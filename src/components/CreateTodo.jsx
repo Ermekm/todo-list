@@ -3,7 +3,7 @@ import cl from './CreateTodo.module.css'
 import { v4 } from 'uuid'
 import Service from '../API/Service'
 
-const CreateTodo = ({ createTodo }) => {
+const CreateTodo = ({ createTodo, setIsModalVisible }) => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
@@ -64,6 +64,12 @@ const CreateTodo = ({ createTodo }) => {
         })
     }
 
+    const closeModal = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setIsModalVisible(false);
+    }
+
 
     return (
         <form className={cl.todoForm} onSubmit={addTodo}>
@@ -114,7 +120,10 @@ const CreateTodo = ({ createTodo }) => {
                 onChange={(e) => handleFileInput(e)}
             />
             <div className={cl.todoForm__btnGroup}>
-                <button className={[cl.todoForm__cancel, 'btn'].join(' ')}>Отменить</button>
+                <button
+                    className={[cl.todoForm__cancel, 'btn'].join(' ')}
+                    onClick={(e) => closeModal(e)}
+                >Отменить</button>
                 <button
                     type="submit"
                     className={[cl.todoForm__submit, 'btn'].join(' ')}

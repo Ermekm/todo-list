@@ -57,7 +57,7 @@ function Todos() {
                 </span>
             </div>
             <MyModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}>
-                <CreateTodo createTodo={createTodo}></CreateTodo>
+                <CreateTodo createTodo={createTodo} setIsModalVisible={setIsModalVisible}></CreateTodo>
             </MyModal>
         </div>
     );
