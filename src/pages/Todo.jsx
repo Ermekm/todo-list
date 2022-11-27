@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import cl from './Todo.module.css'
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
-import Service from '../API/Service';
+import Service from '../Service';
 
 const Todo = () => {
     const [todo, setTodo] = useState({
@@ -68,7 +68,7 @@ const Todo = () => {
         const updatedFiles = todo.files.filter((file) => file.name !== name)
         const fileToDelete = todo.files.find((file) => file.name === name);
 
-        Service.deleteFile(name, id, fileToDelete)
+        Service.deleteFile(id, fileToDelete)
             .then(() => {
                 setTodo({ ...todo, files: updatedFiles })
             })

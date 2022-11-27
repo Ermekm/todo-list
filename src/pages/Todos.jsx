@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import './Todos.css'
-import Service from '../API/Service';
+import Service from '../Service';
 import CreateTodo from '../components/CreateTodo';
 import TodoList from '../components/TodoList';
 import MyModal from '../components/UI/MyModal';

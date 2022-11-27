@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import cl from './CreateTodo.module.css'
 import { v4 } from 'uuid'
-import Service from '../API/Service'
+import Service from '../Service'
 
 const CreateTodo = ({ createTodo }) => {
 

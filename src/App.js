@@ -5,7 +5,7 @@ import Todo from './pages/Todo'
 import Header from './components/Header';
 
 function App() {
-
+  
   return (
     <div className='App'>
       <BrowserRouter>
@@ -15,8 +15,8 @@ function App() {
           </Route>
           <Route path='todo/:id' element={<Todo />}>
           </Route>
-          <Route path='*' element={<Navigate to="/" />}>
-          </Route>
+          {/* <Route path='*' element={<Navigate to="/" />}>
+          </Route> */}
         </Routes>
       </BrowserRouter>
     </div>
