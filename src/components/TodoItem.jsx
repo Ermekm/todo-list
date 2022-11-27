@@ -6,6 +6,7 @@ import Service from '../API/Service'
 
 const TodoItem = ({ todo, removeTodo, changeIsDone }) => {
     const [isCheckHover, setIsCheckHover] = useState(false)
+    const [isDeleteBtnDisabled, setIsDeleteBtnDisabled] = useState(false)
     const navigate = useNavigate()
 
     const expired = useMemo(() => {
@@ -16,15 +17,19 @@ const TodoItem = ({ todo, removeTodo, changeIsDone }) => {
     }, [todo.date])
 
     const handleRemove = (e, id) => {
+        setIsDeleteBtnDisabled(true)
         e.stopPropagation();
 
-        Service.deleteSingle(id, todo.files)
-            .then(() => {
-                removeTodo(id);
-            })
-            .catch((err) => {
-                alert(err)
-            })
+        try {
+            Service.deleteSingle(id, todo.files)
+                .then(() => {
+                    removeTodo(id);
+                })
+        } catch (error) {
+            alert(error)
+        } finally {
+            setIsDeleteBtnDisabled(false)
+        }
     }
 
     const handleCheckbox = (e, id) => {
@@ -59,7 +64,7 @@ const TodoItem = ({ todo, removeTodo, changeIsDone }) => {
             <div className={['todo__date', expired ? 'todo__date-expired' : ''].join(' ')}>
                 {todo.date && (expired ? "Просрочена " : '') + dayjs.unix(todo.date.seconds).format('DD/MM/YYYY')}
             </div>
-            <button className='todo__delete btn' onClick={(e) => handleRemove(e, todo.id)}>Удалить</button>
+            <button className='todo__delete btn' onClick={(e) => handleRemove(e, todo.id)} disabled={isDeleteBtnDisabled}>Удалить</button>
         </div>
     )
 }
