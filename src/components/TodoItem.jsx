@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './TodoItem.css'
 import dayjs from 'dayjs'
-import Service from '../Service'
+import Service from '../API/Service'
 
 const TodoItem = ({ todo, removeTodo, changeIsDone }) => {
     const [isCheckHover, setIsCheckHover] = useState(false)

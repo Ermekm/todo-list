@@ -1,4 +1,4 @@
-import { db, storage } from './firebase'
+import { db, storage } from '../firebase'
 import { collection, doc, arrayUnion, addDoc, getDoc, getDocs, updateDoc, deleteDoc, arrayRemove, Timestamp } from 'firebase/firestore/lite';
 import { ref, uploadBytes, deleteObject, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';

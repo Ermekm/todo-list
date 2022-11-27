@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import cl from './Todo.module.css'
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
-import Service from '../Service';
+import Service from '../API/Service';
 
 const Todo = () => {
     const [todo, setTodo] = useState({
