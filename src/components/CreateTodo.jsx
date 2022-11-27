@@ -42,6 +42,7 @@ const CreateTodo = ({ createTodo }) => {
         setTitle('')
         setDescription('')
         setDate('')
+        setFileList([])
     }
 
     const handleFileInput = (e) => {
